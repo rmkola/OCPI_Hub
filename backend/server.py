@@ -242,7 +242,13 @@ async def get_current_organization(credentials: HTTPAuthorizationCredentials = D
     return Organization(**org)
 
 # Organization Management Routes
-@api_router.post("/organizations/register", response_model=Organization)
+# Registration response model that includes the API token
+class OrganizationRegistrationResponse(BaseModel):
+    organization: Organization
+    api_token: str
+    warning: str = "This API token will only be shown once. Please copy and store it securely."
+
+@api_router.post("/organizations/register", response_model=OrganizationRegistrationResponse)
 async def register_organization(org_data: OrganizationCreate):
     # Check if party_id + country_code combination already exists
     existing = await db.organizations.find_one({
@@ -266,8 +272,13 @@ async def register_organization(org_data: OrganizationCreate):
     
     await db.organizations.insert_one(org_dict)
     
-    # Return organization without exposing API token
-    return Organization(**{k: v for k, v in org_dict.items() if k != "api_token"})
+    # Return organization with API token for one-time display
+    org_without_token = Organization(**{k: v for k, v in org_dict.items() if k != "api_token"})
+    
+    return OrganizationRegistrationResponse(
+        organization=org_without_token,
+        api_token=api_token
+    )
 
 @api_router.get("/organizations", response_model=List[Organization])
 async def get_organizations():
