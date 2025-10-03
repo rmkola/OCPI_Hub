@@ -328,29 +328,35 @@ const Register = () => {
   });
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
-  const [success, setSuccess] = useState('');
+  const [showTokenModal, setShowTokenModal] = useState(false);
+  const [registrationResult, setRegistrationResult] = useState(null);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
     setError('');
-    setSuccess('');
 
     try {
       const response = await axios.post(`${API}/organizations/register`, formData);
-      setSuccess('Organizasyon başarıyla kaydedildi!');
       
-      // Show API token to user
-      alert(`Kayıt başarılı!\n\nOrganizasyon ID: ${response.data.id}\n\nLütfen API token'ınızı güvenli bir yerde saklayın.`);
+      // Store the registration result and show modal
+      setRegistrationResult(response.data);
+      setShowTokenModal(true);
       
-      setTimeout(() => {
-        navigate('/');
-      }, 2000);
     } catch (error) {
       setError(error.response?.data?.detail || 'Kayıt sırasında bir hata oluştu');
     } finally {
       setLoading(false);
     }
+  };
+
+  const handleCloseModal = () => {
+    setShowTokenModal(false);
+    setRegistrationResult(null);
+    // Navigate to dashboard after modal is closed
+    setTimeout(() => {
+      navigate('/');
+    }, 500);
   };
 
   const handleChange = (e) => {
