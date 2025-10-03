@@ -195,15 +195,18 @@ frontend:
         
   - task: "Organization Registration Form"
     implemented: true
-    working: true
+    working: false
     file: "/app/frontend/src/App.js"
-    stuck_count: 0
+    stuck_count: 1
     priority: "high"
-    needs_retesting: false
+    needs_retesting: true
     status_history:
       - working: true
         agent: "main"
         comment: "Registration form displaying correctly with CPO/eMSP role selection"
+      - working: false
+        agent: "user"
+        comment: "User reported: Kayıt sonrası ID kopyalanamıyor - UX sorunu, API token ve Organization ID'yi kullanıcı kopyalayamıyor"
         
   - task: "API Documentation Page"
     implemented: true
