@@ -504,7 +504,7 @@ const Register = () => {
         <ApiTokenModal
           isOpen={showTokenModal}
           onClose={handleCloseModal}
-          organization={registrationResult}
+          organization={registrationResult.organization}
           apiToken={registrationResult.api_token}
         />
       )}
