@@ -228,17 +228,18 @@ metadata:
 
 test_plan:
   current_focus:
-    - "OCPI Organization Management API"
-    - "OCPI Credentials Module"
-    - "OCPI Locations Module"
-    - "OCPI Sessions Module"
-    - "OCPI Tokens Module"
-  stuck_tasks: []
-  test_all: false
-  test_priority: "high_first"
+    - "Organization Registration Form" 
+    - "OCPI Hub Dashboard"
+    - "API Documentation Page"
+  stuck_tasks: 
+    - "Organization Registration Form"
+  test_all: true
+  test_priority: "stuck_first"
 
 agent_communication:
   - agent: "main"
     message: "Initial OCPI 2.3.0 Hub implementation complete. All backend API endpoints need testing. Frontend is verified working through screenshots. Ready for comprehensive backend API testing."
   - agent: "testing"
     message: "🎉 BACKEND TESTING COMPLETE - ALL SYSTEMS OPERATIONAL: Conducted comprehensive testing of all OCPI 2.3.0 Hub backend APIs. Organization management (30 tests), authentication flow, role-based access control, and all OCPI modules (Credentials, Locations, Sessions, Tokens) are working perfectly. Authentication mechanism properly implemented with Bearer tokens. Role restrictions enforced correctly (CPO can create locations, eMSP can access tokens). OCPI response format compliant with specification. Ready for production use."
+  - agent: "main"
+    message: "User reported ID kopyalama sorunu kayıt sonrası. Frontend comprehensive test yapılacak - organizasyon kayıt flow, ID/token görüntüleme UX'i test edilmeli."
