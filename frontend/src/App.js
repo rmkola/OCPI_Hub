@@ -498,6 +498,16 @@ const Register = () => {
           </div>
         </form>
       </div>
+      
+      {/* API Token Modal */}
+      {registrationResult && (
+        <ApiTokenModal
+          isOpen={showTokenModal}
+          onClose={handleCloseModal}
+          organization={registrationResult}
+          apiToken={registrationResult.api_token}
+        />
+      )}
     </div>
   );
 };
