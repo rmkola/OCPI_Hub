@@ -199,7 +199,7 @@ frontend:
     file: "/app/frontend/src/App.js"
     stuck_count: 1
     priority: "high"
-    needs_retesting: true
+    needs_retesting: false
     status_history:
       - working: true
         agent: "main"
@@ -207,6 +207,9 @@ frontend:
       - working: false
         agent: "user"
         comment: "User reported: Kayıt sonrası ID kopyalanamıyor - UX sorunu, API token ve Organization ID'yi kullanıcı kopyalayamıyor"
+      - working: false
+        agent: "testing"
+        comment: "CRITICAL ISSUE CONFIRMED: 1) Backend intentionally excludes API token from registration response (server.py line 270), 2) Frontend shows basic alert() with only Organization ID, no API token displayed, 3) No copy functionality for ID/token, 4) Users cannot access their API token after registration - this breaks the entire OCPI workflow. Root cause: Backend security measure conflicts with UX requirements."
         
   - task: "API Documentation Page"
     implemented: true
