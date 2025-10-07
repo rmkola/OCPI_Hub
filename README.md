@@ -23,21 +23,21 @@ MIT lisansı ile özgürce kullanılabilir.
 
 ## Proje Yapısı
 
-OCPI_Hub_TR/
-├── backend/ # Python backend
-│ ├── app.py
-│ ├── requirements.txt
-│ └── ...
-├── frontend/ # JavaScript frontend
-│ ├── package.json
-│ ├── src/
-│ └── public/
-├── tests/ # Test dosyaları
-├── backend_test.py
-├── backend_test_authenticated.py
-├── test_result.md # Test çıktıları
-├── .gitignore
-└── LICENSE
+OCPI_Hub_TR/  
+├── backend/ # Python backend  
+│ ├── app.py  
+│ ├── requirements.txt  
+│ └── ...  
+├── frontend/ # JavaScript frontend  
+│ ├── package.json  
+│ ├── src/  
+│ └── public/  
+├── tests/ # Test dosyaları  
+├── backend_test.py  
+├── backend_test_authenticated.py  
+├── test_result.md # Test çıktıları  
+├── .gitignore  
+└── LICENSE  
 
 yaml
 Kodu kopyala
